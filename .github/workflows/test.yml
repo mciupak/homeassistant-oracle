@@ -22,7 +22,7 @@ jobs:
        uses: actions/github-script@v3
        with:
         script: |
-          const repo = await github.repos.get(https://github.com/home-assistant/core)
+          const repo = await github.repos.get('https://github.com/home-assistant/core')
           return repo.data
     - name: Get repo inof
       run: echo "Repo ${{ steps.repo.outputs.result }}"
