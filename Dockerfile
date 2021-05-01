@@ -1,4 +1,4 @@
-FROM homeassistant/home-assistant:latest
+FROM homeassistant/home-assistant:dev
 
 ENV LD_LIBRARY_PATH=/lib
 
