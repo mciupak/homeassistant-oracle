@@ -1,4 +1,4 @@
-FROM homeassistant/home-assistant:dev
+FROM mciupak/hass-core
 
 ENV LD_LIBRARY_PATH=/lib
 
