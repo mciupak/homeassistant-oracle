@@ -1,7 +1,7 @@
 FROM --platform=$TARGETPLATFORM homeassistant/home-assistant
+ARG TARGETPLATFORM
 
 ENV LD_LIBRARY_PATH=/lib
-
 
 ENV BUILD_PACKAGES="\
   build-base \
@@ -28,4 +28,3 @@ RUN apk add libaio libnsl libc6-compat && \
     ln -s libc.so.6 /lib/libresolv.so.2 && \
     pip3 install --no-cache-dir cx_Oracle && \
     apk del .build-deps
-
