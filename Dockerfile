@@ -1,4 +1,4 @@
-FROM mciupak/hass-core
+FROM homeassistant/aarch64-homeassistant
 
 ENV LD_LIBRARY_PATH=/lib
 
@@ -8,10 +8,10 @@ ENV BUILD_PACKAGES="\
   linux-headers \
 "
 
-RUN wget https://download.oracle.com/otn_software/linux/instantclient/191000/instantclient-basic-linux.x64-19.10.0.0.0dbru.zip && \
-    unzip instantclient-basic-linux.x64-19.10.0.0.0dbru.zip && \
+RUN wget https://download.oracle.com/otn_software/linux/instantclient/instantclient-basic-linux-arm64.zip && \
+    unzip instantclient-basic-linux-arm64.zip && \
     cp -r instantclient_19_10/* /lib && \
-    rm -rf instantclient-basic-linux.x64-19.10.0.0.0dbru.zip && \
+    rm -rf instantclient-basic-linux-arm64.zip && \
     apk add libaio && \
     apk add libaio libnsl libc6-compat && \
     cd /lib && \
