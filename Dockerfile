@@ -4,12 +4,12 @@ ARG TARGETPLATFORM
 
 ENV LD_LIBRARY_PATH=/lib
 
-RUN if [ "$BUILD_ARCH" = "aarch64" ] || [ "$BUILD_ARCH" = "amd64" ] || [ "$BUILD_ARCH" = "i386" ]; then \
-        if [ "$BUILD_ARCH" = "aarch64" ]; then \
+RUN if [ "$TARGETPLATFORM" = "linux/arm64" ] || [ "$TARGETPLATFORM" = "linux/amd64" ] || [ "$TARGETPLATFORM" = "linux/386" ]; then \
+        if [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
             instantclient_arch="-arm64"; \
-        elif [ "$BUILD_ARCH" = "amd64" ]; then \
+        elif [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
             instantclient_arch="x64"; \
-        elif [ "$BUILD_ARCH" = "i386" ]; then \
+        elif [ "$TARGETPLATFORM" = "linux/386" ]; then \
             instantclient_arch=""; \
         fi && \
         apk add --no-cache --virtual=.build-dependencies build-base linux-headers libarchive-tools && \
