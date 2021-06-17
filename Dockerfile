@@ -1,4 +1,5 @@
-FROM --platform=$TARGETPLATFORM homeassistant/home-assistant
+ARG VERSION
+FROM --platform=$TARGETPLATFORM homeassistant/home-assistant:$VERSION
 ARG TARGETPLATFORM
 
 ENV LD_LIBRARY_PATH=/lib
