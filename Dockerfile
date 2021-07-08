@@ -12,7 +12,7 @@ RUN if [ "$TARGETPLATFORM" = "linux/arm64" ] || [ "$TARGETPLATFORM" = "linux/amd
         elif [ "$TARGETPLATFORM" = "linux/386" ]; then \
             instantclient_arch=""; \
         fi && \
-        apk add --no-cache --virtual=.build-dependencies build-base linux-headers libarchive-tools && \
+        apk add --no-cache --virtual=.build-dependencies libarchive-tools && \
         #Permanent link to the latest package
         wget https://download.oracle.com/otn_software/linux/instantclient/instantclient-basiclite-linux${instantclient_arch}.zip && \
         bsdtar --strip-components=1 -xvf instantclient-basiclite-linux${instantclient_arch}.zip -C /lib && \
@@ -22,6 +22,5 @@ RUN if [ "$TARGETPLATFORM" = "linux/arm64" ] || [ "$TARGETPLATFORM" = "linux/amd
         ln -s /lib64/* /lib && \
         ln -s libnsl.so.2 /usr/lib/libnsl.so.1 && \
         ln -s libc.so.6 /lib/libresolv.so.2 && \
-        pip3 install --no-cache-dir cx_Oracle && \
         apk del .build-dependencies; \
     fi
